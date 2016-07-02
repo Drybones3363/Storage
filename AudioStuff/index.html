@@ -1,11 +1,13 @@
 <html>
 <head><title></title></head>
-<audio id="myAudio" src="Faded.mp3"></audio>
 <body>
+<audio id = "myAudio" src="Faded.mp3">
+</audio>
 <script>
 window.onload = function() {
   var ctx = new AudioContext();
   var audio = document.getElementById('myAudio');
+  audio.crossOrigin = "anonymous";
   var audioSrc = ctx.createMediaElementSource(audio);
   var analyser = ctx.createAnalyser();
   // we have to connect the MediaElementSource with the analyser 
@@ -22,12 +24,12 @@ window.onload = function() {
      // update data in frequencyData
      analyser.getByteFrequencyData(frequencyData);
      // render frame based on values in frequencyData
+     
      console.log(frequencyData)
   }
-  audio.start();
+  audio.play();
   renderFrame();
 };
-
 </script>
 </body>
 </html>
